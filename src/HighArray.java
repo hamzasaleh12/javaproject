@@ -18,13 +18,29 @@ public class HighArray {
         int low = 0;
         int high = nElements - 1;
         insertionSort();
-        while (low <= high){
+
+        while (low <= high) {
             int mid = (low + high) / 2;
-            if(array[mid] == value) return mid;
-            else if(array[mid] > value) high = mid - 1;
+
+            if (array[mid] == value) return mid;
+            else if (array[mid] > value) high = mid - 1;
             else low = mid + 1;
+
         }
         return -1;
+    }
+
+    // time = o(log(n)) , space = o(log(n))
+    public int recSearch(int start , int end ,int value){
+        // assume array is sorted
+        if(start > end) return -1; // not found
+        else{
+            int mid = (start + end) / 2;
+
+            if(array[mid] == value) return mid;
+            else if(array[mid] > value) return recSearch(start , mid -1 , value);
+            else return recSearch(mid + 1 , end , value);
+        }
     }
 
     public int delete(int value){
@@ -81,6 +97,44 @@ public class HighArray {
             }
             array[in] = temp;
         }
+    }
+
+    public void mergeSort(){
+        recMergeSort(array);
+    }
+
+    private void recMergeSort(int[] array){
+        if(array.length == 1) return;
+
+        int mid = array.length / 2;
+
+        int[] leftArr = new int[mid];
+        int[] rightArr = new int[array.length - mid];
+
+        for(int i = 0 ; i < array.length ; i++){
+            if(i < mid){
+                leftArr[i] = array[i];
+            } else{
+                rightArr[i - mid] = array[i];
+            }
+        }
+
+        recMergeSort(leftArr);
+        recMergeSort(rightArr);
+        merge(array , leftArr , rightArr);
+    }
+
+    private void merge(int[] array, int[] leftArr, int[] rightArr) {
+        int i = 0 , l = 0 , r = 0;
+        while(l < leftArr.length && r < rightArr.length){
+            if(leftArr[l] < rightArr[r]){
+                array[i++] = leftArr[l++];
+            } else{
+                array[i++] = rightArr[r++];
+            }
+        }
+        while(l < leftArr.length) array[i++] = leftArr[l++];
+        while (r < rightArr.length) array[i++] = rightArr[r++];
     }
 
     private void swap(int one, int two) {
