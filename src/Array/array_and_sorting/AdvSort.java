@@ -1,5 +1,15 @@
-public class AdvSort {
-    public static void mergeSort(int[] arr){
+package Array.array_and_sorting;
+
+public class AdvSort extends Array{
+    public AdvSort(int size) {
+        super(size);
+    }
+
+    public void mergeSort(){
+        recMergeSort(arr);
+    }
+
+    public void recMergeSort(int[] arr){
         if(arr.length == 1) return; // Base case
 
         int mid = arr.length / 2;
@@ -14,8 +24,8 @@ public class AdvSort {
             }
         }
 
-        mergeSort(leftArr);
-        mergeSort(rightArr);
+        recMergeSort(leftArr);
+        recMergeSort(rightArr);
         merge(arr, leftArr , rightArr);
     }
 
@@ -37,10 +47,10 @@ public class AdvSort {
     }
 
 
-    public static void quickSort(int[] arr) {
+    public void quickSort() {
         recQuickSort(arr,0,arr.length - 1);
     }
-    private static void recQuickSort(int[] arr, int start, int end) {
+    private void recQuickSort(int[] arr, int start, int end) {
         if(start >= end) return; // base case
 
         int pivot = partition(arr , start , end);
@@ -48,24 +58,24 @@ public class AdvSort {
         recQuickSort(arr , pivot + 1 , end); // right side
     }
 
-    private static int partition(int[] arr, int start, int end) {
+    private int partition(int[] arr, int start, int end) {
         int i = start - 1;
         int pivot = arr[end];
 
         for(int j = start ; j < end ; j++){
             if(arr[j] < pivot){
                 i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                swap(arr , i , j);
             }
         }
         i++;
-        int temp = arr[i];
-        arr[i] = arr[end];
-        arr[end] = temp;
-
+        swap(arr , i , end);
         return i;
+    }
+    private void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
 }

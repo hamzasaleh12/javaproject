@@ -1,3 +1,5 @@
+package LinkedList.stack_and_queue;
+
 public class Queue {
     private Node front;
     private Node rear;
@@ -31,17 +33,7 @@ public class Queue {
     }
 
     public int peek() {
-        return (front == null) ? -1 : front.data;
-    }
-
-    @Override
-    public String toString() {
-        Node curr = front;
-        StringBuilder res = new StringBuilder();
-        while (curr != null) {
-            res.append(curr.data).append(" -> ");
-            curr = curr.next;
-        }
-        return res + "Null";
+        if(isEmpty()) return -1;
+        else return front.data;
     }
 }

@@ -1,8 +1,10 @@
-public class Dequeue {
+package LinkedList.Dequeu;
+
+public class DequeueWithLinkedList {
     private DoubledNode first;
     private DoubledNode last;
 
-    public Dequeue() {
+    public DequeueWithLinkedList() {
         first = null;
         last = null;
     }
@@ -67,23 +69,5 @@ public class Dequeue {
 
     public int peekLast() {
         return (isEmpty()) ? -1 : last.data;
-    }
-
-    @Override
-    public String toString() {
-        if (isEmpty()) return "Deque is Empty (Null)";
-
-        DoubledNode curr = first;
-        StringBuilder str = new StringBuilder();
-
-        str.append("Null <== ");
-        while (curr != null) {
-            str.append("[").append(curr.data).append("]");
-            if (curr.next != null) str.append(" <=> ");
-            curr = curr.next;
-        }
-        str.append(" ==> Null");
-
-        return str.toString();
     }
 }

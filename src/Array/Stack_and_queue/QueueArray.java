@@ -1,15 +1,13 @@
-public class MyQueue {
+package Array.Stack_and_queue;
+
+public class QueueArray {
     private int[] queueArray;
     private int front = 0;
     private int rear = -1;
     private int nItems = 0;
     private int size;
 
-    public MyQueue(int size) {
-        this.size = size;
-        this.queueArray = new int[size];
-    }
-    public MyQueue() {
+    public QueueArray() {
         this.size = 10;
         this.queueArray = new int[size];
     }
@@ -25,15 +23,6 @@ public class MyQueue {
         if (front == size) front = 0;
         nItems--;
         return temp;
-    }
-
-    @Override
-    public String toString(){
-        StringBuilder str = new StringBuilder();
-        for(int i = front; i <= nItems ; i++){
-            str.append(queueArray[i]).append(" ");
-        }
-        return "{ " + str + "}";
     }
 
     public boolean isEmpty() {

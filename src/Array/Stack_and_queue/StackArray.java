@@ -1,3 +1,5 @@
+package Array.Stack_and_queue;
+
 public class StackArray {
     private int[] arrayStack;
     private int top = -1;

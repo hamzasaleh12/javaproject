@@ -1,3 +1,5 @@
+package LinkedList.Dequeu;
+
 public class DoubledNode {
     DoubledNode next;
     DoubledNode prev;

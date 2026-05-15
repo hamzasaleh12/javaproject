@@ -1,3 +1,5 @@
+package BinarySearchTree;
+
 public class Student {
     int id;
     int grade;

@@ -1,3 +1,5 @@
+package LinkedList.stack_and_queue;
+
 public class Node {
     public int data;
     public Node next;

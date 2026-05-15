@@ -1,3 +1,5 @@
+package LinkedList.stack_and_queue;
+
 public class Stack {
     private Node top;
 
@@ -26,16 +28,5 @@ public class Stack {
 
     public int peek() {
         return (top == null) ? -1 : top.data;
-    }
-
-    @Override
-    public String toString() {
-        Node curr = top;
-        StringBuilder res = new StringBuilder();
-        while (curr != null) {
-            res.append(curr.data).append(" -> ");
-            curr = curr.next;
-        }
-        return res + "Null";
     }
 }

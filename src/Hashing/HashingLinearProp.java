@@ -1,8 +1,10 @@
-public class Hashing {
+package Hashing;
+
+public class HashingLinearProp {
     int size;
     int[] arr;
 
-    public Hashing(int size){
+    public HashingLinearProp(int size){
         this.size = size;
         this.arr = new int[size];
     }
@@ -12,7 +14,7 @@ public class Hashing {
     }
 
     public void insert(int val){
-        int index = hash(val); // 0 , 2
+        int index = hash(val);
 
         while(arr[index] != 0){
             index++;
@@ -32,9 +34,5 @@ public class Hashing {
         }
 
         return true;
-    }
-
-    static void main() {
-        System.out.println("hellow");
     }
 }
