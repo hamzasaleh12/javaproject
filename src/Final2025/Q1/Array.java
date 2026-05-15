@@ -55,18 +55,24 @@ public class Array {
     int idx;
     public int binarySearch(int[] arr , int tar){
         // assume array is sorted
-        recBinarySearch(0 , arr.length, arr , tar);
+        recBinarySearch(0 , arr.length - 1, arr , tar);
         return idx;
     }
     public void recBinarySearch(int low , int high , int[] arr , int tar){
         int mid = (low + high) / 2;
-        if(low > high) idx = -1;
-        if(arr[mid] == tar) idx = mid;
+        if(low > high) {
+            idx = -1;
+            return;
+        }
+        if(arr[mid] == tar){
+            idx = mid;
+            return;
+        }
 
         if(arr[mid] > tar){
             recBinarySearch(low , mid - 1 , arr , tar);
         } else{
-            recBinarySearch(low , mid - 1 , arr , tar);
+            recBinarySearch(mid + 1 , high , arr , tar);
         }
     }
 }
